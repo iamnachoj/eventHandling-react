@@ -6,18 +6,21 @@ function App() {
   function changeInput(event) {
     return setName(event.target.value);
   }
-  function submitClick() {
-    return setHeading(name);
+  function submitClick(event) {
+    setHeading(name);
+    event.preventDefault();
   }
   return (
     <div className="container">
       <h1>Hello {heading}!</h1>
-      <input
-        onChange={changeInput}
-        type="text"
-        placeholder="What's your name?"
-      />
-      <button onClick={submitClick}>Submit</button>
+      <form onSubmit={submitClick}>
+        <input
+          onChange={changeInput}
+          type="text"
+          placeholder="What's your name?"
+        />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
